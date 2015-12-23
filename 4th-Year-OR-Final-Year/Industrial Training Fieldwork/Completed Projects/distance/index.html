@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script src="js/jquery-2.1.1.js"></script>
+
+    </head>
+    <body>
+        <br>
+        <br><br>
+        Origin: <input id="orig" type="text" style="width:35em"><br><br>
+        Destination: <input id="dest" type="text" style="width:35em"><br><br>
+        <input type="button" class="calculate" value="Calculate">
+        Distance: <input id="dist" type="text" style="width:35em">
+        <script type="text/javascript">
+            var origin =$('#orig').val();//new google.maps.LatLng(40.715317, -74.006325);
+            var destination =$('#dest').val();//new google.maps.LatLng(40.695910, -73.947981); //"Stockholm, Sweden",
+            function calculate()
+            {
+                service = new google.maps.DistanceMatrixService();
+                service.getDistanceMatrix(
+                        {
+                            origins: [$('#orig').val()],
+                            destinations: [$('#dest').val()],
+                            travelMode: google.maps.TravelMode.DRIVING,
+                            avoidHighways: false,
+                            avoidTolls: false
+                        },
+                        callback
+                );
+            }
+
+
+            function callback(response, status) {
+                var orig = document.getElementById("orig"),
+                        dest = document.getElementById("dest"),
+                        dist = document.getElementById("dist");
+
+                if(status=="OK") {
+                    orig.value = response.destinationAddresses[0];
+                    dest.value = response.originAddresses[0];
+                    dist.value = response.rows[0].elements[0].distance.text;
+                } else {
+                    alert("Error: " + status);
+                }
+            }
+            $('.calculate').on('click',function(){
+                calculate();
+
+            })
+        </script>
+    </body>
+</html>

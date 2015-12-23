@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>Nestable</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="cf nestable-lists">
+
+    <input type="text" class="input-field" placeholder="Add to Your Menu">
+    <input type="url" class="input-field-link" placeholder="https://www.w3.com">
+    <input type="button" value="add" class="inp-button">
+
+    <div class="dd" id="nestable">
+        <p>Main Items</p>
+        <ol class="dd-list" id="list-add-here">
+            <li class="dd-item" data-id="Home">
+                <a href="" ><div class="dd-handle">Home</div></a>
+            </li>
+
+            <li class="dd-item" data-id="Search">
+                <div class="dd-handle">Search</div>
+            </li>
+            <li class="dd-item" data-id="Contact">
+                <div class="dd-handle">Contact</div>
+            </li>
+        </ol>
+    </div>
+
+    <div class="dd" id="nestable2">
+        <p>Trash Items</p>
+        <ol class="dd-list">
+            <li class="dd-item" data-id="About us">
+                <div class="dd-handle">About us</div>
+            </li>
+
+        </ol>
+    </div>
+</div>
+
+
+<input type="hidden" id="nestable-output" />
+<input type="button" value="save" class="save-menu">
+<p>&nbsp;</p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="jquery.nestable.js"></script>
+<script>
+    $(document).ready(function()
+    {
+
+        var updateOutput = function(e)
+        {
+            var list   = e.length ? e : $(e.target),
+                    output = list.data('output');
+            if (window.JSON) {
+                output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+            } else {
+                output.val('JSON browser support required for this demo.');
+            }
+        };
+
+        $('#nestable').nestable({
+            group: 1
+        }).on('change', updateOutput);
+        $('#nestable2').nestable({
+            group: 1
+        }).on('change', updateOutput);
+        updateOutput($('#nestable').data('output', $('#nestable-output')));
+        updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+        //alert($('#nestable-output').val());
+
+
+
+        $('#nestable-menu').on('click', function(e)
+        {
+            var target = $(e.target),
+                    action = target.data('action');
+            if (action === 'expand-all') {
+                $('.dd').nestable('expandAll');
+            }
+            if (action === 'collapse-all') {
+                $('.dd').nestable('collapseAll');
+            }
+        });
+    });
+    $('.inp-button').on('click', function(){
+        if($('.input-field').val() && $('.input-field-link').val())
+        {
+            $('#list-add-here').append('<li class="dd-item" data-id='+$('.input-field').val()+'><a href='+$('.input-field-link').val()+'> <div class="dd-handle">'+$('.input-field').val()+'</div></a></li>');
+        }
+        else
+            alert('input Invalid');
+    });
+
+    $('.save-menu').on('click', function(){
+        var x =$('#nestable-output').val();
+        //alert($('#nestable-output').val());
+        var data ={JSdata : x};
+        //alert(data['JSdata']);
+        $.ajax({
+            method:"POST",
+            url:"saveMenu.php",
+            data:data,
+            success:function(data){
+                alert('succes');
+            },
+            error:function(data){alert('wrong coaling');}
+        });
+
+    });
+</script>
+</body>
+</html>

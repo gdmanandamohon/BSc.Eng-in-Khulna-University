@@ -1,0 +1,26 @@
+*{margin: 0; padding: 0 auto}
+body{  display: block; background:#DDDDDD}
+#wrapper{width: 960px;margin:0 auto; padding: 0; background-color: #ffffff}
+#google_map {width: 660px; height: 575px;}
+.marker-edit label{display:block;margin-bottom: 5px;}
+.marker-edit label span {width: 100px;float: left;}
+.marker-edit label input, .marker-edit label select{height: 24px;}
+.marker-edit label textarea{height: 60px;}
+.marker-edit label input, .marker-edit label select, .marker-edit label textarea {width: 60%;margin:0px;padding-left: 5px;border: 1px solid #DDD;border-radius: 3px;}
+h1.marker-heading{color: #585858;margin: 0px;padding: 0px;font: 18px "Trebuchet MS", Arial;border-bottom: 1px dotted #D8D8D8;}
+div.marker-info-win {max-width: 300px;margin-right: -20px;}
+div.marker-info-win p{padding: 0px;margin: 10px 0px 10px 0;}
+div.marker-inner-win{padding: 5px;}
+button.save-marker, button.remove-marker{border: none;background: rgba(0, 0, 0, 0);color: #00F;padding: 0px;text-decoration: underline;margin-right: 10px;cursor: pointer;
+}
+.menu-list ul{padding-left: 350px; padding-top: 50px;}
+.menu-list li{ padding-left: 20px;list-style: none; display: inline-block;border: 1px solid #4d90fe; border-radius: 1px}
+.menu-list li a{text-decoration: none}
+.menu-list li a:hover{}
+#selector-type{float: left; width: 300px; height: 500px; margin-top: -17px;}
+#selector-type ul li {list-style: none; padding: 1px; border: 1px solid #4d90fe}
+#selector-type ul li a{text-decoration: none; color: #000; text-align: center}
+#selector-type ul li a:hover{color: rgba(236, 5, 17, 0.89)
+}
+#selector-type ul li:hover {cursor: pointer; color: rgb(236, 82, 141)}
+#selector-type select{margin-left: 40px;width: 260px}

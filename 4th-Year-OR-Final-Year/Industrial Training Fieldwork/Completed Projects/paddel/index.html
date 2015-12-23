@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <script src="js/jquery-1.3.1.min.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div>
+            <select id="year" onchange="on_change_year_load_make(this.value)"></select>
+            <select id="make" ></select>
+            <select id="model"></select>
+            <select id='door-window'></select>
+            <input type="text" id="zip-code">
+            <input type="text" id="promo-code">
+            <input type="button" id="get-offer">
+        </div>
+        <script>
+            $(document).ready(function(){
+                var data={};
+                $.ajax({
+                    method:"POST",
+                    url:"php/loadyear.php",
+                    data:data,
+                    dataType:'json',
+                    success:function(data){
+                        var select = document.getElementById("year");
+                        select.options[select.options.length] = new Option('','');
+                        for(var x =0; x<data.length;x++)
+                            select.options[select.options.length] = new Option(data[x],data[x]);
+
+                    },
+                    error:function(data){alert('wrong coaling');}
+                });
+            });
+            $('#year').change(function ()
+            {
+                var data ={year:$('#year option:selected').val()};
+                $.ajax({
+                    method:"GET",
+                    url:"php/loadmake.php",
+                    data:data,
+                    dataType:'json',
+                    success:function(data){
+                        var select = document.getElementById("make");
+                        select.options.length=0;
+                        select.options[select.options.length] = new Option('','');
+                        for(var x =0; x<data.length;x++)
+                            select.options[select.options.length] = new Option(data[x],data[x]);
+                        var e = document.createEvent('MouseEvents');
+                        e.initMouseEvent("mousedown");
+                        $("#make")[0].dispatchEvent(e);
+
+                    },
+                    error:function(data){alert('wrong coaling');}
+                });
+
+            });
+            $('#make').change(function()
+            {
+                var data ={year:$('#year option:selected').val(), make:$('#make option:selected').val()};
+                $.ajax({
+                    type:"GET",
+                    url:"php/loadmodel.php",
+                    data:data,
+                    dataType:'json',
+                    success:function(data){
+                        var select = document.getElementById("model");
+                        select.options.length=0;
+                        select.options[select.options.length] = new Option('','');
+                        for(var x =0; x<data.length;x++)
+                            select.options[select.options.length] = new Option(data[x],data[x]);
+                        var e = document.createEvent('MouseEvents');
+                        e.initMouseEvent("mousedown");
+                        $("#model")[0].dispatchEvent(e);
+                    },
+                    error:function(data){alert('wrong coaling');}
+                });
+            });
+            $('#model').change(function(){
+                var data ={year:$('#year option:selected').val(), make:$('#make option:selected').val(), model:$('#model option:selected').val()};
+                $.ajax({
+                    type:"GET",
+                    url:"php/loaddrwndw.php",
+                    data:data,
+                    dataType:'json',
+                    success:function(data){
+                        var select = document.getElementById("door-window");
+                        select.options.length=0;
+                        select.options[select.options.length] = new Option('','');
+                        for(var x =0; x<data.length;x++)
+                            select.options[select.options.length] = new Option(data[x],data[x]);
+                        var e = document.createEvent('MouseEvents');
+                        e.initMouseEvent("mousedown");
+                        $("#door-window")[0].dispatchEvent(e);
+                    },
+                    error:function(data){alert('wrong coaling');}
+                });
+            });
+
+        </script>
+    </body>
+</html>

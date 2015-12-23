@@ -1,0 +1,102 @@
+__author__ = 'lazycoder'
+import fileinput
+file = open("input.txt")
+from  TestingLibrary import Testing
+testinglib=Testing();
+temp_string='';
+data_type='';
+result_array_symbolic_table={}
+result_array_token_table={}
+
+def insert_Token_Symbol_table( self, string_tobe_insert ):
+    if(testinglib.is_data_type(string_tobe_insert)):
+        data_type =string_tobe_insert;
+        result_array_symbolic_table.append(string_tobe_insert+string_tobe_insert+"-")
+    elif (testinglib.is_keywords(string_tobe_insert)):
+        result_array_symbolic_table.append(string_tobe_insert+string_tobe_insert+"-")
+        data_type =''
+    elif (testinglib.is_ogical_operator(string_tobe_insert)):
+        result_array_symbolic_table.append(string_tobe_insert+"Logical Operator"+"VAlue")
+        data_type =''
+    elif (testinglib.is_operator(string_tobe_insert)):
+        result_array_symbolic_table.append(string_tobe_insert+"Operator"+"VAlue")
+        data_type =''
+    elif (testinglib.is_bracket(string_tobe_insert)):
+        result_array_symbolic_table.append(string_tobe_insert+"Bracket"+"VAlue")
+        data_type =''
+    elif (string_tobe_insert is "," | string_tobe_insert is ";"):
+        result_array_symbolic_table.append(string_tobe_insert+"Special Symbol"+"VAlue")
+        data_type =''
+    else:
+        result_array_symbolic_table.append(string_tobe_insert+"id"+"Pointer to symbolic table")
+
+while 1:
+    line = file.readline()
+    if not line:
+        break;
+    else:
+        x =0;
+
+        #print(line)
+        while(x<line.__len__()):
+            temp_char =line[x]
+
+            if(temp_char.isdigit()):
+                temp_string +=temp_char
+
+            elif(temp_char.isalpha()):
+                temp_string +=temp_char
+            elif(testinglib.is_delimeter(temp_char)):
+                    print(temp_string);
+                    temp_string=''
+                    print temp_char;
+                    temp_char=''
+
+            else:
+                if(temp_char.isspace()):
+                    print(temp_string)
+                    temp_string = ''
+                    temp_char =''
+
+                elif(testinglib.is_var_separator(temp_char)):
+                    print(temp_string);
+                    temp_string = ''
+                    temp_char =''
+
+                elif(testinglib.is_bracket(temp_char)):
+                    print(temp_string);
+                    temp_string = ''
+                    print(temp_char);
+                    temp_char =''
+                elif(testinglib.is_operator(temp_char)):
+                    print(temp_string);
+                    temp_string = ''
+                    if( testinglib.is_operator(line[x+1])):
+                        if(testinglib.is_ogical_operator((temp_char+line[x+1]))):
+                            print((temp_char+line[x+1]))
+
+                        elif((temp_char+line[x+1])=="//"):
+                            break
+                        elif((temp_char+line[x+1])=="/*"):
+                            while 1:
+                                if("*/" in line):
+                                    line=line[line.find("*/"):line.__len__()]
+                                    #print(line)
+                                    x=0;
+                                    break
+                                    #exit()
+                                else:
+                                    line =file.readline()
+                        x+=1
+
+                    else:
+                        print(temp_char)
+                        temp_char =''
+                else:
+                    #print("comment el")
+                    #print(temp_char);
+                    x+=1
+                    continue
+            x+=1;
+
+

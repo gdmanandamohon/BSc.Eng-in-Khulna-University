@@ -1,0 +1,49 @@
+Tokens:
+-----------------------------------------
+Lexeme        Token Name        Attribute Value
+-----------------------------------------
+int            int                  --    
+main                 id                --
+(            Special Sysmbol      opening parenthesis
+)            Special Sysmbol      closing parenthesis
+{            Special Sysmbol      Left Curly brace
+int            int                  --    
+a1x                 id             Pointer To Symbolic Table
+,           Special Sysmbol               Comma
+b                 id             Pointer To Symbolic Table
+,           Special Sysmbol               Comma
+sum                 id             Pointer To Symbolic Table
+;             Special Sysmbol           Semiclone
+sum                 id             Pointer To Symbolic Table
+a                 id             Pointer To Symbolic Table
+&&            Operator          logical AND
+b                 id             Pointer To Symbolic Table
+;             Special Sysmbol           Semiclone
+sum                 id             Pointer To Symbolic Table
+a                 id             Pointer To Symbolic Table
+++            Operator          increment by 1
+b                 id             Pointer To Symbolic Table
+;             Special Sysmbol           Semiclone
+return            return                  --  
+0             Numberl                Constant
+;             Special Sysmbol           Semiclone
+int            int                  --    
+p                 id             Pointer To Symbolic Table
+;             Special Sysmbol           Semiclone
+}            Special Sysmbol      Right Curly brace
+-----------------------------------------
+
+
+
+
+
+Symbol Table:
+------------------------------------------------------------------
+Symbol      Token      Data Type    Pointer To Symbol Table Entry
+-----------------------------------------------------------------
+main              id                --               0
+a1x             id                   int               1
+b             id                   int               2
+sum             id                   int               3
+p             id                   int               4
+-----------------------------------------------------------------

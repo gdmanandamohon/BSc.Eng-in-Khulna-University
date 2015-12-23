@@ -1,0 +1,32 @@
+int main()
+{
+	 int m1x,n,o;
+	 float number=200.5;
+	 string x,y,nm_25;
+	int count =1;
+	long a=1000.9,v2x=10;
+
+	 for(m=1;m<=number;m++)
+	 {
+		  for(n=1;n<=number-m;n++)
+		  {
+				printf("  ");
+		  }
+		  for(o=1;o<=(2*m-1);o++)
+		  {
+			count= count+ /*wellcome I am a comment. He He .. Try to scrip me. uhhh.*/ 50;
+            if(count%2==0)
+            printf(" 0");
+            else
+            printf(" 1");
+            count++;
+            //Hi I am a Comment. You Can Skrip Me. He He He ......
+		  }
+		  printf("\n");
+	 }
+	 boolean pq_x=false, new_var;
+	 char pq_x, new_var;
+
+
+	 return 0;
+}

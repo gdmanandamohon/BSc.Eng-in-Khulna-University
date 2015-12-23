@@ -1,0 +1,23 @@
+22.8167� N, 89.5500� E
+
+get hospitals in google map api php
+
+https://developers.google.com/maps/documentation/javascript/examples/places-searchbox
+
+23.7000° N, 90.3750° E
+Dhaka, Coordinates
+
+40.7127° N, 74.0059° W
+New York City, Coordinates
+
+
+
+api key===AIzaSyAspk2p4d6TkPfIaVOSwc6e6Aaf57j36-c
+
+
+
+ananda / (&khtvZ![5n4wAX
+
+(&khtvZ![5n4wAX
+
+https://hira-pc:8443/svn/dev/training/ananda/custom_google_map/
