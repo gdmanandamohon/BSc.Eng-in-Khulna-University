@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<Button android:text="All contact" android:background="#056EAC" android:id="@+id/show" android:layout_height="wrap_content" android:height="40sp" android:width="180sp" android:layout_width="fill_parent" android:textStyle="bold" android:typeface="serif" ></Button>
+<ListView android:id="@+id/contactList" android:background="#056E5C" android:layout_width="wrap_content" android:layout_height="350dip"  android:layout_alignParentTop="true" android:scrollbars="vertical" android:textSize="15dip"></ListView>
+
+	<RelativeLayout android:id="@+id/RelativeLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content" >
+		<Button android:text="Login" android:background="#056EAC" android:id="@+id/login" android:layout_height="45sp" android:layout_width="fill_parent" android:textStyle="bold" android:typeface="serif" android:layout_gravity="bottom" android:layout_marginBottom="5px"></Button>
+	</RelativeLayout>
+</LinearLayout>
